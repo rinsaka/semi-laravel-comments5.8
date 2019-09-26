@@ -25,4 +25,18 @@ class CommentsController extends Controller
     return view('comments/show')
             ->with('comment', $comment);
   }
+
+  public function store(Request $request)
+  {
+    $this->validate($request, [
+      'title' => 'required|max:10',  // 入力が必須で，最大10文字
+      'body' => 'required'           // 入力が必須
+    ]);
+
+    $comment = new Comment();    // インスタンスを生成する
+    $comment->title = $request->title; // タイトルをセット
+    $comment->body = $request->body;   // 本文をセット
+    $comment->save();                  // データベースに登録
+    return redirect('/comments');      // リダイレクト
+  }
 }
