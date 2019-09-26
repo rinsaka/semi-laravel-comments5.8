@@ -9,7 +9,8 @@ class CommentsController extends Controller
 {
   public function index()
   {
-    $comments = Comment::paginate(5);
+    $comments = Comment::orderBy('id', 'DESC')
+                  ->paginate(5);
     return view('comments.index')
               ->with('comments', $comments);
   }
