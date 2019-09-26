@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>コメント</title>
-</head>
-<body>
+@extends('layouts.default')
+
+@section('title', 'コメント')
+
+@section('content')
   <h1>コメント</h1>
   <dl>
     <dt>ID:</dt>
@@ -26,5 +24,4 @@
       <button>コメント投稿の削除</button>
     </form>
   </div>
-</body>
-</html>
+@endsection

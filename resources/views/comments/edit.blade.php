@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>コメント編集</title>
-</head>
-<body>
+@extends('layouts.default')
+
+@section('title', 'コメントの編集')
+
+@section('content')
   <h1>コメント編集</h1>
   <div>
     <form method="post" action="{{ route('comment_update') }}" enctype='multipart/form-data'>
@@ -30,5 +28,4 @@
       </p>
     </form>
   </div>
-</body>
-</html>
+@endsection

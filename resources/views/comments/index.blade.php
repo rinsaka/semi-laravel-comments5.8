@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>コメント一覧</title>
-</head>
-<body>
+@extends('layouts.default')
+
+@section('title', 'コメントの一覧')
+
+@section('content')
   <h1>コメント一覧</h1>
   <ur>
     @foreach ($comments as $comment)
@@ -40,5 +38,4 @@
       </p>
     </form>
   </div>
-</body>
-</html>
+@endsection
