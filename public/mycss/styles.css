@@ -1,0 +1,18 @@
+h1 {
+  color: #02397B;
+  border-left: 20px solid #3F8AE3;
+  padding: 3px 0 3px 10px;
+}
+
+ul.pagination {
+  padding:0;
+  font-size:0px;
+}
+
+ul.pagination li {
+  width:35px;
+  border:1px solid #3F8AE3;
+  display: inline-block;
+  text-align: center;
+  font-size:16px;
+}
