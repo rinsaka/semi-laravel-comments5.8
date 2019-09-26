@@ -14,5 +14,10 @@
     <dt>Body:</dt>
     <dd>{{ $comment->body }}</dd>
   </dl>
+  <p>
+    <a href="{{ action('CommentsController@edit', $comment->id) }}">
+      ［編集］
+    </a>
+  </p>
 </body>
 </html>

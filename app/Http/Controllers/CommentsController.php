@@ -22,7 +22,7 @@ class CommentsController extends Controller
     if (!$comment) {  // コメントが取得できない（IDが不正の）場合はリダイレクト
       return redirect('/comments');
     }
-    return view('comments/show')
+    return view('comments.show')
             ->with('comment', $comment);
   }
 
@@ -38,5 +38,33 @@ class CommentsController extends Controller
     $comment->body = $request->body;   // 本文をセット
     $comment->save();                  // データベースに登録
     return redirect('/comments');      // リダイレクト
+  }
+
+  public function edit($id)
+  {
+    $comment = Comment::where('id', '=', $id)
+                ->first();
+    if (!$comment) {
+      return redirect('/comments');
+    }
+    return view('comments.edit')    // show 関数との違いはここだけ
+            ->with('comment', $comment);
+  }
+
+  public function update(Request $request)
+  {
+    $this->validate($request, [
+      'title' => 'required|max:10',  // 入力が必須で，最大10文字
+      'body' => 'required'           // 入力が必須
+    ]);
+    $comment = Comment::where('id', '=', $request->id)
+                ->first();
+    if (!$comment) {
+      return redirect('/comments');
+    }
+    $comment->title = $request->title;
+    $comment->body = $request->body;
+    $comment->save();
+    return redirect()->action('CommentsController@show', $request->id);
   }
 }
