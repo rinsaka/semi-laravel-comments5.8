@@ -10,6 +10,7 @@ class CommentsController extends Controller
   public function index()
   {
     $comments = Comment::get();    // SELECT * FROM comments; のイメージ
-    dd($comments);
+    return view('comments.index')
+              ->with('comments', $comments);
   }
 }
