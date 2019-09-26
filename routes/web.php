@@ -20,3 +20,4 @@ Route::get('/comments/{id}', 'CommentsController@show');
 Route::post('/comments', 'CommentsController@store');
 Route::get('/comments/{id}/edit', 'CommentsController@edit');
 Route::patch('/comments', 'CommentsController@update')->name('comment_update');
+Route::delete('/comments/{id}', 'CommentsController@destroy');

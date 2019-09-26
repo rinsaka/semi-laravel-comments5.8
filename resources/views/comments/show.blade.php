@@ -19,5 +19,12 @@
       ［編集］
     </a>
   </p>
+  <div>
+    <form action="{{ action('CommentsController@destroy', $comment->id) }}" method="post">
+      @csrf
+      @method('DELETE')
+      <button>コメント投稿の削除</button>
+    </form>
+  </div>
 </body>
 </html>
