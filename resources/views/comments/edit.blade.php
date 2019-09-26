@@ -18,7 +18,6 @@
           <span class="error">{{ $errors->first('title') }}</span>
         @endif
       </p>
-
       <p>
         <label for="body">Body: </label>
         <textarea name="body" id="body" rows="4" cols="50">{{ $comment->body }}{{ old('body') }}</textarea>
@@ -29,9 +28,7 @@
       <p>
         <input type="submit" value="更新">
       </p>
-
     </form>
   </div>
-
 </body>
 </html>
