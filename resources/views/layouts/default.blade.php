@@ -7,6 +7,12 @@
 </head>
 <body>
   <div class="container">
+    @if (session('flash_message'))
+      <div class="flash_message" onclick="this.classList.add('hidden')">
+        {{ session('flash_message') }}
+      </div>
+    @endif
+
     @yield('content')
   </div>
 </body>

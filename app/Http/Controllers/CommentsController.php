@@ -9,7 +9,7 @@ class CommentsController extends Controller
 {
   public function index()
   {
-    $comments = Comment::orderBy('id', 'DESC')
+    $comments = Comment::orderBy('updated_at', 'DESC')
                   ->paginate(5);
     return view('comments.index')
               ->with('comments', $comments);
@@ -21,7 +21,7 @@ class CommentsController extends Controller
     $comment = Comment::where('id', '=', $id)
                 ->first();
     if (!$comment) {  // コメントが取得できない（IDが不正の）場合はリダイレクト
-      return redirect('/comments');
+      return redirect('/comments')->with('flash_message', 'コメントが見つかりません');
     }
     return view('comments.show')
             ->with('comment', $comment);
@@ -38,7 +38,8 @@ class CommentsController extends Controller
     $comment->title = $request->title; // タイトルをセット
     $comment->body = $request->body;   // 本文をセット
     $comment->save();                  // データベースに登録
-    return redirect('/comments');      // リダイレクト
+    return redirect('/comments')
+            ->with('flash_message', '投稿しました');
   }
 
   public function edit($id)
@@ -46,7 +47,7 @@ class CommentsController extends Controller
     $comment = Comment::where('id', '=', $id)
                 ->first();
     if (!$comment) {
-      return redirect('/comments');
+      return redirect('/comments')->with('flash_message', 'コメントが見つかりません');
     }
     return view('comments.edit')    // show 関数との違いはここだけ
             ->with('comment', $comment);
@@ -61,12 +62,13 @@ class CommentsController extends Controller
     $comment = Comment::where('id', '=', $request->id)
                 ->first();
     if (!$comment) {
-      return redirect('/comments');
+      return redirect('/comments')->with('flash_message', 'コメントが見つかりません');
     }
     $comment->title = $request->title;
     $comment->body = $request->body;
     $comment->save();
-    return redirect()->action('CommentsController@show', $request->id);
+    return redirect()->action('CommentsController@show', $request->id)
+                      ->with('flash_message', '更新しました');
   }
 
   public function destroy($id)
@@ -74,9 +76,10 @@ class CommentsController extends Controller
     $comment = Comment::where('id', '=', $id)
                     ->first();
     if (!$comment) {
-      return redirect('/comments');
+      return redirect('/comments')->with('flash_message', 'コメントが見つかりません');
     }
     $comment->delete();
-    return redirect('/comments');
+    return redirect('/comments')
+              ->with('flash_message', '削除しました');
   }
 }

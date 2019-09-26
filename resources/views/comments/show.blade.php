@@ -11,6 +11,10 @@
     <dd>{{ $comment->title }}</dd>
     <dt>Body:</dt>
     <dd>{{ $comment->body }}</dd>
+    <dt>投稿日時:</dt>
+    <dd>{{ $comment->created_at }}</dd>
+    <dt>更新日時:</dt>
+    <dd>{{ $comment->updated_at }}</dd>
   </dl>
   <p>
     <a href="{{ action('CommentsController@edit', $comment->id) }}">

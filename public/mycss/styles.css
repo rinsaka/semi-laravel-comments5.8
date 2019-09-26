@@ -16,3 +16,13 @@ ul.pagination li {
   text-align: center;
   font-size:16px;
 }
+
+.flash_message {
+  text-align: center;
+  color: blue;
+  background: yellow;
+}
+
+.hidden {
+  display: none;
+}
