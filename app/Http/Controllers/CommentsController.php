@@ -9,7 +9,7 @@ class CommentsController extends Controller
 {
   public function index()
   {
-    $comments = Comment::get();    // SELECT * FROM comments; のイメージ
+    $comments = Comment::paginate(5);
     return view('comments.index')
               ->with('comments', $comments);
   }

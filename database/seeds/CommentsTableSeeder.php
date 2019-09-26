@@ -28,5 +28,16 @@ class CommentsTableSeeder extends Seeder
         'title' => '<三個目>のコメント',
         'body' => 'シーダによってテストデータを設定します．'
     ]);
+
+    $faker = Faker\Factory::create('ja_JP');
+
+    $i = 1;
+    while ($i < 98) {
+      DB::table('comments')->insert([
+        'title' => $faker->name,
+        'body' => $faker->address . ' : ' . $faker->phoneNumber . ' : ' . $faker->email
+      ]);
+      $i++;
+    }
   }
 }

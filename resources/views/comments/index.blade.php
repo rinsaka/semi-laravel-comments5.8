@@ -4,6 +4,9 @@
 
 @section('content')
   <h1>コメント一覧</h1>
+  <div>
+    {{ $comments->links() }}
+  </div>
   <ur>
     @foreach ($comments as $comment)
       <li>
